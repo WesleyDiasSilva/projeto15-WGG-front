@@ -2,10 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 
-function Input({label}) {
+function Input({label, type, onChange, name }) {
 
   return (
-      <InputElement placeholder={label}/>
+      <InputElement 
+      placeholder={label}
+      type={type}
+      name={name}
+      onChange={onChange}
+      />
   )
 }
 

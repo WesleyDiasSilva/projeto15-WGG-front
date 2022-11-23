@@ -17,7 +17,7 @@ function LoginPage() {
         <Button text="Login"/>
         <RedirectInformation>
           <Informations>Novo usuário? </Informations>
-          <Link to="sign-in">
+          <Link to="/sign-up">
             <Redirect>Cadastre-se</Redirect>
           </Link>
         </RedirectInformation>
