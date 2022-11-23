@@ -12,13 +12,16 @@ function LoginPage() {
       <ContainerData>
         <TitleOfPage>WGG STORE</TitleOfPage>
         <Informations>insira suas credencias de login </Informations>
+        <Input label="Nome"/>
+        <Input label="Username"/>
         <Input label="Email"/>
         <Input label="Senha"/>
-        <Button text="Login"/>
+        <Input label="Confirmar senha"/>
+        <Button text="CRIAR CONTA"/>
         <RedirectInformation>
-          <Informations>Novo usuário? </Informations>
-          <Link to="/sign-up">
-            <Redirect>Cadastre-se</Redirect>
+          <Informations>Já tem uma conta? </Informations>
+          <Link to="/sign-in">
+            <Redirect>Entrar</Redirect>
           </Link>
         </RedirectInformation>
       </ContainerData>
