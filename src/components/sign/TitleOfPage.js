@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function TitleOfPage({children}) {
+function TitleOfPage() {
   return (
     <Title>
-      {children}
+      W<span>GG</span>
     </Title>
   )
 }
@@ -12,8 +12,11 @@ function TitleOfPage({children}) {
 export default TitleOfPage
 
 const Title = styled.h1`
-  font-family: Inter;
-  font-size: 2rem;
-  color: #00DFFC;
+  font-family: 'Russo One', sans-serif;
+  font-size: 4rem;
+  color: #343838;
   font-weight: 500;
+  span{
+    color: #00DFFC;
+  }
 `
