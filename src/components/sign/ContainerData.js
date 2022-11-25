@@ -15,14 +15,14 @@ export default ContainerData
 
 const ContainerLogin = styled.div`
   width: 60%;
-  height: 70%;
-  background-color: #555555;
-  border-radius: 20px;
+  height: auto;
+  padding: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 50px;
+  background-color: rgb(105, 105, 105, 0.89);
 `
-
 
 const ContainerDataLogin = styled.div`
   display: flex;
