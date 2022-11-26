@@ -4,6 +4,7 @@ import { API } from "../API";
 import Navbar from "../components/navbar/Navbar";
 import Sidebar from "../components/sidebar/Sidebar";
 import { ContextUser } from "../contexts/ContextUser";
+import styled from "styled-components";
 
 function HomePage() {
   const [searchFilter, setSearchFilter] = React.useState("");
@@ -42,11 +43,25 @@ function HomePage() {
   }, []);
 
   return (
-    <div>
-      <Navbar value={searchFilter} setValue={setSearchFilter} />
+    <>
+    <Homebox>
+
       <Sidebar setOnlyAvailable={setOnlyAvailable} setRating={setRating}/>
-    </div>
+      <Navbar value={searchFilter} setValue={setSearchFilter} />
+      <ProductsBox>
+      
+      </ProductsBox>
+    </Homebox>
+    </>
   );
 }
 
 export default HomePage;
+
+const Homebox = styled.div`
+  display: flex;
+  `
+const ProductsBox = styled.div`
+  margin-top: 80px;
+  padding: 5%;
+`

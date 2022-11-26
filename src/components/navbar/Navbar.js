@@ -30,6 +30,7 @@ function Navbar({ value, setValue }) {
 export default Navbar
 
 const NavContainer = styled.header`
+  position: fixed;
   background-color: #696969;
   width: 100%;
   height: 80px;

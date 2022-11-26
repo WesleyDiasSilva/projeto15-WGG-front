@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Button from '../components/form/Button'
 import Input from '../components/form/Input'
 import ContainerData from '../components/sign/ContainerData'
 import TitleOfPage from '../components/sign/TitleOfPage'
 import BackgroundImg from "../components/sign/BackgroundImg";
-
 import axios from "axios"
+import { API } from "../API";
 
 export default function LoginPage() {
     const [form, setForm] = useState({
@@ -19,7 +19,7 @@ export default function LoginPage() {
         password: ""
     })
     const [checkPassword, setCheckPassword] = useState({})
-
+    const navigate = useNavigate("/")
     function Form(e) {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
@@ -30,21 +30,19 @@ export default function LoginPage() {
     }
     
     function Send(){   
-        if(form === ''){
-
-        }
         if(checkPassword !== form.password){
             alert("As senhas não coincidem")
             return
         }
   
-        const URL = 'http://localhost:5000/sign-up'
+        const URL = `${API}/sign-up`
         const post = axios.post (URL, form)
         post.then((res) => {
-            
             console.log(res.data)
+            navigate('/sign-in')
         })
         post.catch((err) => {
+            alert(err.responde.data)
             console.log(err.response.data)
         })
     }
@@ -52,10 +50,10 @@ export default function LoginPage() {
     return (
         <BackgroundImg>
             <ContainerData >
-                <TitleOfPage>WGG STORE</TitleOfPage>
+                <TitleOfPage />
                 <Informations>insira suas credencias de login </Informations>
                 <Input
-                    type="text" 
+                    type="text"
                     label="Nome" 
                     name="name"
                     value={form.name}
