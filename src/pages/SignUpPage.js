@@ -5,6 +5,9 @@ import Button from '../components/form/Button'
 import Input from '../components/form/Input'
 import ContainerData from '../components/sign/ContainerData'
 import TitleOfPage from '../components/sign/TitleOfPage'
+import BackgroundImg from "../components/sign/BackgroundImg";
+
+import axios from "axios"
 
 function LoginPage() {
     const [form, setForm] = useState({
@@ -15,15 +18,44 @@ function LoginPage() {
         picture: "",
         password: ""
     })
+    const [checkPassword, setCheckPassword] = useState({})
 
     function Form(e) {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
+   
+    }
+    function ConfirmPassword(e){
+        const { value } = e.target
+        setCheckPassword(value)
+    }
+    
+    function Send(){   
+        // try{
+        //     new URL(form.picture)
+        // } catch (err){
+        //     alert("Insira uma URL válida")
+        // }
+        if(checkPassword !== form.password){
+            alert("As senhas não coincidem")
+            console.log("TA DIFERENTE")
+            return
+        }
+  
+        const URL = 'http://localhost:5000/sign-up'
+        const post = axios.post (URL, form)
+        post.then((res) => {
+            
+            console.log(res.data)
+        })
+        post.catch((err) => {
+            console.log(err.response.data)
+        })
     }
 
     return (
-        <Container>
-            <ContainerData>
+        <BackgroundImg>
+            <ContainerData >
                 <TitleOfPage>WGG STORE</TitleOfPage>
                 <Informations>insira suas credencias de login </Informations>
                 <Input
@@ -60,6 +92,7 @@ function LoginPage() {
                     name="picture"
                     value={form.picture}
                     onChange={Form}
+
                 />
                 <Input
                     label="Senha"
@@ -72,9 +105,11 @@ function LoginPage() {
                     label="Confirmar senha"
                     type="password"
                     name="confirmPassword"
+                    onChange={ConfirmPassword}
                 />
                 <Button
                     text="CRIAR CONTA"
+                    onClick={Send}
                 />
                 <RedirectInformation>
                     <Informations>Já tem uma conta? </Informations>
@@ -83,20 +118,13 @@ function LoginPage() {
                     </Link>
                 </RedirectInformation>
             </ContainerData>
-        </Container>
+        </BackgroundImg>
     )
 }
 
 export default LoginPage
 
-const Container = styled.div`
-  background-color: #000;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
+
 const Informations = styled.span`
   font-family: Inter;
   font-size: 1.2rem;

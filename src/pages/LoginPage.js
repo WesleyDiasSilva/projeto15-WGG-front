@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import BackgroundImg from '../components/sign/BackgroundImg'
 import ContainerData from "../components/sign/ContainerData";
 import TitleOfPage from "../components/sign/TitleOfPage";
 import { API } from "../API";
@@ -33,7 +34,7 @@ function LoginPage() {
   }
 
   return (
-    <Container>
+    <BackgroundImg>
       <ContainerData>
         <TitleOfPage>WGG STORE</TitleOfPage>
         <Informations>insira suas credencias de login </Informations>
@@ -52,20 +53,13 @@ function LoginPage() {
           </Link>
         </RedirectInformation>
       </ContainerData>
-    </Container>
-  );
+    </BackgroundImg>
+  )
+
 }
 
 export default LoginPage;
 
-const Container = styled.div`
-  background-color: #000;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 const Informations = styled.span`
   font-family: Inter;
   font-size: 1.2rem;

@@ -16,8 +16,18 @@ function Input({ label, type = "text", onChange, name, value }) {
 export default Input;
 
 const InputElement = styled.input`
-  font-family: Inter;
   width: 60%;
+  height: 50px;
+  border: 0;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 4px 20px 0;
+  font-size: 18px;
+
+  :focus{
+  outline: none;
+}
+  /* width: 60%;
   border: none;
   margin-top: 10px;
   font-size: 17px;
