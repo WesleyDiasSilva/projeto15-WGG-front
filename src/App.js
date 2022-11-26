@@ -3,17 +3,24 @@ import GlobalStyles from "../src/assets/reset";
 import LoginPage from "./pages/LoginPage";
 import styled from 'styled-components'
 import SignUpPage from './pages/SignUpPage'
-import Homepage from './pages/HomePage'
+import HomePage from "./pages/HomePage";
+import React from "react";
+import { ContextUser } from "./contexts/ContextUser";
+
 function App() {
+const [user, setUser] = React.useState({})
+
   return (
     <BrowserRouter>
      <Content>
       <GlobalStyles />
+      <ContextUser.Provider value={{ user, setUser }}>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/home" element={<HomePage />}/>
         <Route path="/sign-in" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
       </Routes>
+      </ContextUser.Provider>
       </Content>
     </BrowserRouter>
   )
