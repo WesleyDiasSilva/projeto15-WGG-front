@@ -20,7 +20,6 @@ function LoginPage() {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
     }
-    console.log(form)
 
     return (
         <Container>
