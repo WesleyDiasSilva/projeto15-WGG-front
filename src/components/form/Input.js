@@ -1,20 +1,19 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-
-function Input({label, type, onChange, name }) {
-
+function Input({ label, type = "text", onChange, name, value }) {
   return (
-      <InputElement 
+    <InputElement
       placeholder={label}
       type={type}
       name={name}
-      onChange={onChange}
-      />
-  )
+      onChange={({ target }) => onChange(target.value)}
+      value={value}
+    />
+  );
 }
 
-export default Input
+export default Input;
 
 const InputElement = styled.input`
   width: 60%;
@@ -36,9 +35,11 @@ const InputElement = styled.input`
   padding: 10px;
   box-sizing: border-box;
   color: #000;
-  &::placeholder{
-    color: #000
-  }&:focus{
+  &::placeholder {
+    font-family: Inter;
+    color: #000;
+  }
+  &:focus {
     border: none;
-  } */
-`
+  }
+`;
