@@ -6,8 +6,8 @@ function Input({label, type, onChange, name }) {
 
   return (
       <InputElement 
+      type={type} 
       placeholder={label}
-      type={type}
       name={name}
       onChange={onChange}
       />

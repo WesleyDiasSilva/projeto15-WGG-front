@@ -3,13 +3,14 @@ import GlobalStyles from "../src/assets/reset";
 import LoginPage from "./pages/LoginPage";
 import styled from 'styled-components'
 import SignUpPage from './pages/SignUpPage'
-
+import Homepage from './pages/HomePage'
 function App() {
   return (
     <BrowserRouter>
      <Content>
       <GlobalStyles />
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route path="/sign-in" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
       </Routes>

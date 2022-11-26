@@ -1,15 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-function TitleOfPage() {
+export default function TitleOfPage() {
   return (
     <Title>
       W<span>GG</span>
     </Title>
   )
 }
-
-export default TitleOfPage
 
 const Title = styled.h1`
   font-family: 'Russo One', sans-serif;

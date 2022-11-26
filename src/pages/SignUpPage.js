@@ -9,7 +9,7 @@ import BackgroundImg from "../components/sign/BackgroundImg";
 
 import axios from "axios"
 
-function LoginPage() {
+export default function LoginPage() {
     const [form, setForm] = useState({
         name: "",
         username: "",
@@ -23,7 +23,6 @@ function LoginPage() {
     function Form(e) {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
-   
     }
     function ConfirmPassword(e){
         const { value } = e.target
@@ -31,14 +30,11 @@ function LoginPage() {
     }
     
     function Send(){   
-        // try{
-        //     new URL(form.picture)
-        // } catch (err){
-        //     alert("Insira uma URL válida")
-        // }
+        if(form === ''){
+
+        }
         if(checkPassword !== form.password){
             alert("As senhas não coincidem")
-            console.log("TA DIFERENTE")
             return
         }
   
@@ -59,8 +55,8 @@ function LoginPage() {
                 <TitleOfPage>WGG STORE</TitleOfPage>
                 <Informations>insira suas credencias de login </Informations>
                 <Input
-                    label="Nome"
-                    type="text"
+                    type="text" 
+                    label="Nome" 
                     name="name"
                     value={form.name}
                     onChange={Form}
@@ -122,19 +118,14 @@ function LoginPage() {
     )
 }
 
-export default LoginPage
-
-
 const Informations = styled.span`
   font-family: Inter;
   font-size: 1.2rem;
   color: #fff;
 `
-
 const RedirectInformation = styled.div`
 
 `
-
 const Redirect = styled.span`
   font-family: Inter;
   font-size: 1.2rem;
