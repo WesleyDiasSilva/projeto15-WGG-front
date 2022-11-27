@@ -5,10 +5,10 @@ import logoutImage from "../../assets/img/Vector.svg"
 import defaultUserImage from "../../assets/img/avatardefault.svg"
 import ConfirmLogout from './ConfirmLogout'
 
-function Navbar({value, setValue}) {
+function Navbar({ value, setValue }) {
   const [modalLogout, setModalLogout] = React.useState(false)
 
-  function openLogout(){
+  function openLogout() {
     setModalLogout(true)
   }
 
@@ -16,12 +16,12 @@ function Navbar({value, setValue}) {
   return (
     <NavContainer>
       <Logo />
-      <Search placeholder='Search' value={value} onChange={({target}) => setValue(target.value)}/>
+      <Search placeholder='Search' value={value} onChange={({ target }) => setValue(target.value)} />
       <UserContainer>
         <Username>Wesley</Username>
-        <ImageUser src={defaultUserImage}/>
-        <Logout onClick={openLogout} src={logoutImage}/>
-        {modalLogout && <ConfirmLogout setModalLogout={setModalLogout} modalLogout={modalLogout}/>}
+        <ImageUser src={defaultUserImage} />
+        <Logout onClick={openLogout} src={logoutImage} />
+        {modalLogout && <ConfirmLogout setModalLogout={setModalLogout} modalLogout={modalLogout} />}
       </UserContainer>
     </NavContainer>
   )
@@ -30,6 +30,7 @@ function Navbar({value, setValue}) {
 export default Navbar
 
 const NavContainer = styled.header`
+  position: fixed;
   background-color: #696969;
   width: 100%;
   height: 80px;

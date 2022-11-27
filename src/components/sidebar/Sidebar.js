@@ -15,6 +15,7 @@ function Sidebar({setRating, setOnlyAvailable}) {
 export default Sidebar
 
 const Side = styled.aside`
+  margin-top: 80px;
   background-color: #696969;
   height: 100vh;
   width: 200px;

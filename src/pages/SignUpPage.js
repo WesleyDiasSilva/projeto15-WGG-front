@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Button from '../components/form/Button'
 import Input from '../components/form/Input'
 import ContainerData from '../components/sign/ContainerData'
 import TitleOfPage from '../components/sign/TitleOfPage'
 import BackgroundImg from "../components/sign/BackgroundImg";
-
 import axios from "axios"
+import { API } from "../API";
 
-function LoginPage() {
+export default function LoginPage() {
     const [form, setForm] = useState({
         name: "",
         username: "",
@@ -19,11 +19,10 @@ function LoginPage() {
         password: ""
     })
     const [checkPassword, setCheckPassword] = useState({})
-
+    const navigate = useNavigate("/")
     function Form(e) {
         const { name, value } = e.target
         setForm({ ...form, [name]: value })
-   
     }
     function ConfirmPassword(e){
         const { value } = e.target
@@ -31,24 +30,19 @@ function LoginPage() {
     }
     
     function Send(){   
-        // try{
-        //     new URL(form.picture)
-        // } catch (err){
-        //     alert("Insira uma URL válida")
-        // }
         if(checkPassword !== form.password){
             alert("As senhas não coincidem")
-            console.log("TA DIFERENTE")
             return
         }
   
-        const URL = 'http://localhost:5000/sign-up'
+        const URL = `${API}/sign-up`
         const post = axios.post (URL, form)
         post.then((res) => {
-            
             console.log(res.data)
+            navigate('/sign-in')
         })
         post.catch((err) => {
+            alert(err.responde.data)
             console.log(err.response.data)
         })
     }
@@ -56,11 +50,11 @@ function LoginPage() {
     return (
         <BackgroundImg>
             <ContainerData >
-                <TitleOfPage>WGG STORE</TitleOfPage>
+                <TitleOfPage />
                 <Informations>insira suas credencias de login </Informations>
                 <Input
-                    label="Nome"
                     type="text"
+                    label="Nome" 
                     name="name"
                     value={form.name}
                     onChange={Form}
@@ -122,19 +116,14 @@ function LoginPage() {
     )
 }
 
-export default LoginPage
-
-
 const Informations = styled.span`
   font-family: Inter;
   font-size: 1.2rem;
   color: #fff;
 `
-
 const RedirectInformation = styled.div`
 
 `
-
 const Redirect = styled.span`
   font-family: Inter;
   font-size: 1.2rem;
